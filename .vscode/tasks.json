@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-debug-mod",
+      "type": "shell",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/LogicBlocks/LogicBlocks.csproj",
+        "-c",
+        "Debug"
+      ],
+      "options": {
+        "env": {
+          "VINTAGE_STORY": "${env:VINTAGE_STORY}"
+        }
+      },
+      "problemMatcher": "$msCompile",
+      "group": "build"
+    },
+    {
+      "label": "stage-debug-mod",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy", "Bypass",
+        "-File", "${workspaceFolder}/.vscode/stage-mod.ps1",
+        "-Src", "${workspaceFolder}/LogicBlocks/assets",
+        "-Dst", "${workspaceFolder}/LogicBlocks/bin/Debug/Mods/mod/assets"
+      ],
+      "dependsOn": "build-debug-mod",
+      "problemMatcher": []
+    },
+    {
+      "label": "remove-installed-mod",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy", "Bypass",
+        "-File", "${workspaceFolder}/.vscode/remove-installed-mod.ps1",
+        "-ModsDir", "${env:VINTAGE_STORY}Data/Mods",
+        "-Pattern", "logicblocks*"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "prepare-debug",
+      "dependsOn": ["remove-installed-mod", "stage-debug-mod"],
+      "problemMatcher": []
+    }
+  ]
+}

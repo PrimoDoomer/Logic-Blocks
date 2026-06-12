@@ -1,0 +1,13 @@
+{
+  "type": "Code",
+  "modid": "logicblocks",
+  "name": "Logic Blocks",
+  "authors": [
+    "Pierre-Alexandre Goya"
+  ],
+  "description": "This mod provides blocks for logic and interactions with gates.",
+  "version": "1.1.0",
+  "dependencies": {
+    "game": "1.22.3"
+  }
+}

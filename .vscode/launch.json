@@ -1,0 +1,56 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Vintage Story (Client) + LogicBlocks",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "prepare-debug",
+      "program": "${env:VINTAGE_STORY}/Vintagestory.exe",
+      "args": [
+        "--addModPath=${workspaceFolder}/LogicBlocks/bin/Debug/Mods"
+      ],
+      "cwd": "${env:VINTAGE_STORY}",
+      "console": "internalConsole",
+      "stopAtEntry": false,
+      "justMyCode": false,
+      "symbolOptions": {
+        "searchPaths": [
+          "${workspaceFolder}/LogicBlocks/bin/Debug/Mods/mod"
+        ],
+        "searchMicrosoftSymbolServer": false
+      }
+    },
+    {
+      "name": "Vintage Story (Server) + LogicBlocks",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "prepare-debug",
+      "program": "${env:VINTAGE_STORY}/VintagestoryServer.exe",
+      "args": [
+        "--addModPath=${workspaceFolder}/LogicBlocks/bin/Debug/Mods"
+      ],
+      "cwd": "${env:VINTAGE_STORY}",
+      "console": "internalConsole",
+      "stopAtEntry": false,
+      "justMyCode": false,
+      "symbolOptions": {
+        "searchPaths": [
+          "${workspaceFolder}/LogicBlocks/bin/Debug/Mods/mod"
+        ],
+        "searchMicrosoftSymbolServer": false
+      }
+    },
+    {
+      "name": "Attach to Vintage Story",
+      "type": "coreclr",
+      "request": "attach",
+      "justMyCode": false,
+      "symbolOptions": {
+        "searchPaths": [
+          "${workspaceFolder}/LogicBlocks/bin/Debug/Mods/mod"
+        ]
+      }
+    }
+  ]
+}
